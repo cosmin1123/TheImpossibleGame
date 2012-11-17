@@ -11,14 +11,14 @@ function Player (size, color) {
 }
 
 Player.prototype.move = function () {
-    if (player.x < canvas.width) {
-        if (vx < 4 && vx > -4)
-            vx += ax;
-        if (vy < 4 && vy > -4)
-            vy += ay;
-        player.x += vx;
-        player.y += vy;
-    }
+   
+    if (vx < 4 && vx > -4)
+        vx += ax;
+    if (vy < 4 && vy > -4)
+        vy += ay;
+    player.x += vx;
+    player.y += vy;
+
 }
 
 Player.prototype.draw = function (context) {
