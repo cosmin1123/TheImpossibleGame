@@ -49,8 +49,8 @@
       }, false);
 
       window.addEventListener('keyup', function () {
-        vx = ax;
-        vy = ay;
+        vx = 0;
+        vy = 0;
         ax = 0;
         ay = 0;
        
@@ -60,9 +60,9 @@
         window.requestAnimationFrame(drawFrame, canvas);
         context.clearRect(0, 0, canvas.width, canvas.height);
 
-        if( vx < 5 && vx > -5)
+        if( vx < 3 && vx > -3)
             vx += ax;
-        if( vy < 5 && vy > -5)
+        if( vy < 3 && vy > -3)
             vy += ay;
         player.x += vx;
         player.y += vy;
