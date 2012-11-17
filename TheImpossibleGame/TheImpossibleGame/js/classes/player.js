@@ -1,4 +1,4 @@
-function Ball (radius, color) {
+function Player (radius, color) {
   if (radius === undefined) { radius = 40; }
   if (color === undefined) { color = "#ff0000"; }
   this.x = 0;
@@ -11,7 +11,7 @@ function Ball (radius, color) {
   this.lineWidth = 1;
 }
 
-Ball.prototype.draw = function (context) {
+Player.prototype.draw = function (context) {
   context.save();
   context.translate(this.x, this.y);
   context.rotate(this.rotation);
@@ -21,7 +21,7 @@ Ball.prototype.draw = function (context) {
   context.fillStyle = this.color;
   context.beginPath();
   //x, y, radius, start_angle, end_angle, anti-clockwise
-  context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
+  context.rect(0, 0, 40,40);
   context.closePath();
   context.fill();
   if (this.lineWidth > 0) {

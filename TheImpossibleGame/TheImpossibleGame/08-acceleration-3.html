@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Acceleration 3</title>
+    <title>The Impossible Game</title>
     <link rel="stylesheet" href="../include/style.css">
   </head>
   <body>
@@ -13,7 +13,7 @@
 
 
     <script src="./js/utils.js"></script>
-    <script src="./js/classes/ball.js"></script>
+    <script src="./js/classes/player.js"></script>
     <script>
         window.onload = function () {
             
@@ -22,14 +22,14 @@
             canvas.height = window.innerHeight;
           context = canvas.getContext('2d'),
           
-          ball = new Ball(),
+          player = new Player(),
           vx = 0,
           vy = 0,
           ax = 0,
           ay = 0;
 
-      ball.x = canvas.width / 2;
-      ball.y = canvas.height / 2;
+      player.x = canvas.width / 2;
+      player.y = canvas.height / 2;
 
       window.addEventListener('keydown', function (event) {
         switch (event.keyCode) {
@@ -60,12 +60,13 @@
         window.requestAnimationFrame(drawFrame, canvas);
         context.clearRect(0, 0, canvas.width, canvas.height);
 
-       
-        vx += ax;
-        vy += ay;
-        ball.x += vx;
-        ball.y += vy;
-        ball.draw(context);
+        if( vx < 5 && vx > -5)
+            vx += ax;
+        if( vy < 5 && vy > -5)
+            vy += ay;
+        player.x += vx;
+        player.y += vy;
+        player.draw(context);
       }());
     };
     </script>
