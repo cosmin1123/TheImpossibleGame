@@ -11,6 +11,8 @@ function Player (size, color) {
 }
 
 Player.prototype.draw = function (context) {
+
+
   context.save();
   context.translate(this.x, this.y);
   context.scale(this.scaleX, this.scaleY);
