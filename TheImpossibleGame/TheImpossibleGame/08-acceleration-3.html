@@ -57,12 +57,8 @@
                 window.requestAnimationFrame(drawFrame, canvas);
                 context.clearRect(0, 0, canvas.width, canvas.height);
 
-                if( vx < 4 && vx > -4)
-                    vx += ax;
-                if(vy < 4 && vy > -4)
-                    vy += ay;
-                player.x += vx;
-                player.y += vy;
+                player.move()
+
                 player.draw(context);
             }());
         };
