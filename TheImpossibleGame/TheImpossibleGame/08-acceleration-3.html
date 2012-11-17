@@ -5,11 +5,11 @@
     <title>Acceleration 3</title>
     <link rel="stylesheet" href="../include/style.css">
   </head>
-  <body>
+  <body style="background-color:black">
     <header>
      
     </header>
-    <canvas id="canvas" width="500" height="600"></canvas>
+    <canvas id="canvas" width="500" height="600" style="background-color:azure;"></canvas>
 
 
     <script src="js/utils.js"></script>
@@ -18,7 +18,7 @@
         window.onload = function () {
             var canvas = document.getElementById('canvas');
             context = canvas.getContext('2d');
-            canvas.width = window.innerWidth - 10;
+            canvas.width = window.innerWidth - 15;
             canvas.height = window.innerHeight - 100;
                 player = new Player();
                 vx = 0,
