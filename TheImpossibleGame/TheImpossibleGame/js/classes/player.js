@@ -13,7 +13,7 @@ function Player (size, color) {
 Player.prototype.draw = function (context) {
   context.save();
   context.translate(this.x, this.y);
-//  context.scale(this.scaleX, this.scaleY);
+  context.scale(this.scaleX, this.scaleY);
   
   context.lineWidth = this.lineWidth;
   context.fillStyle = this.color;
@@ -26,18 +26,16 @@ Player.prototype.draw = function (context) {
   
   context.beginPath();
   context.arc(25, 20, 20, 0, 1 * Math.PI);
-  context.stroke();
+//  context.stroke();
 
   context.beginPath();
   context.arc(15, 10, 10, 0, 2 * Math.PI);
-  context.stroke();
+//  context.stroke();
 
   context.beginPath();
   context.arc(35, 10, 10, 0, 2 * Math.PI);
-  context.stroke();
-
-  if (this.lineWidth > 0) {
-    context.stroke();
-  }
+ // context.stroke();
+    
+ 
   context.restore();
 };

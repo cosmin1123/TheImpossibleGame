@@ -2,73 +2,70 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>The Impossible Game</title>
+    <title>Acceleration 3</title>
     <link rel="stylesheet" href="../include/style.css">
   </head>
   <body>
     <header>
      
     </header>
-    <canvas id="canvas" width="400" height="400"></canvas>
+    <canvas id="canvas" width="800" height="800"></canvas>
 
 
-    <script src="./js/utils.js"></script>
-    <script src="./js/classes/player.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="./js/classes/Player.js"></script>
     <script>
         window.onload = function () {
-            
-            var canvas = document.getElementById('canvas')
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-          context = canvas.getContext('2d'),
-          
-          player = new Player(),
-          vx = 0,
-          vy = 0,
-          ax = 0,
-          ay = 0;
+            var canvas = document.getElementById('canvas');
+            context = canvas.getContext('2d');
 
-      player.x = player.size;
-      player.y = player.size;
+                player = new Player();
+                vx = 0,
+                vy = 0,
+                ax = 0,
+                ay = 0;
 
-      window.addEventListener('keydown', function (event) {
-        switch (event.keyCode) {
-        case 37:      //left
-          ax = -0.1;
-          break;
-        case 39:      //right
-          ax = 0.1;
-          break;
-        case 38:      //up
-          ay = -0.1;
-          break;
-        case 40:      //down
-          ay = 0.1;
-          break;
-        }
-      }, false);
+            player.x = 0;
+            player.y = 0;
 
-      window.addEventListener('keyup', function () {
-        vx = 0;
-        vy = 0;
-        ax = 0;
-        ay = 0;
-       
-      }, false);
+            window.addEventListener('keydown', function (event) {
+                switch (event.keyCode) {
+                    case 37:      //left
+                        ax = -0.1;
+                        break;
+                    case 39:      //right
+                        ax = 0.1;
+                        break;
+                    case 38:      //up
+                        ay = -0.1;
+                        break;
+                    case 40:      //down
+                        ay = 0.1;
+                        break;
+                }
+            }, false);
 
-      (function drawFrame () {
-        window.requestAnimationFrame(drawFrame, canvas);
-        context.clearRect(0, 0, canvas.width, canvas.height);
+            window.addEventListener('keyup', function () {
+                ax = 0;
+                ay = 0;
+                vx = 0;
+                vy = 0;
+            }, false);
 
-        if( vx < 3 && vx > -3)
-            vx += ax;
-        if( vy < 3 && vy > -3)
-            vy += ay;
-        player.x += vx;
-        player.y += vy;
-        player.draw(context);
-      }());
-    };
+            (function drawFrame() {
+                window.requestAnimationFrame(drawFrame, canvas);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+
+                if( vx < 4 && vx > -4)
+                    vx += ax;
+                if(vy < 4 && vy > -4)
+                    vy += ay;
+                player.x += vx;
+                player.y += vy;
+                player.draw(context);
+            }());
+        };
     </script>
   </body>
 </html>
+
