@@ -9,7 +9,7 @@
     <header>
      
     </header>
-    <canvas id="canvas" width="800" height="800"></canvas>
+    <canvas id="canvas" width="500" height="600"></canvas>
 
 
     <script src="js/utils.js"></script>
@@ -18,15 +18,16 @@
         window.onload = function () {
             var canvas = document.getElementById('canvas');
             context = canvas.getContext('2d');
-
+            canvas.width = window.innerWidth - 100;
+            canvas.height = window.innerHeight - 100;
                 player = new Player();
                 vx = 0,
                 vy = 0,
                 ax = 0,
                 ay = 0;
 
-            player.x = 0;
-            player.y = 0;
+            player.x = player.size;
+            player.y = player.size;
 
             window.addEventListener('keydown', function (event) {
                 switch (event.keyCode) {
