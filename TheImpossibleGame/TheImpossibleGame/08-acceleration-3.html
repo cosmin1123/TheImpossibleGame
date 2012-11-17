@@ -49,14 +49,18 @@
       }, false);
 
       window.addEventListener('keyup', function () {
+        vx = ax;
+        vy = ay;
         ax = 0;
         ay = 0;
+       
       }, false);
 
       (function drawFrame () {
         window.requestAnimationFrame(drawFrame, canvas);
         context.clearRect(0, 0, canvas.width, canvas.height);
 
+       
         vx += ax;
         vy += ay;
         ball.x += vx;
