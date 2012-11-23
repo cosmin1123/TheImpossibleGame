@@ -88,29 +88,20 @@
                 window.requestAnimationFrame(drawFrame, canvas);
                 context.clearRect(0, 0, canvas.width, canvas.height);
 
-                i=0;
-                    while (i <= 800 ) {
-                            wall[i] = new Wall(32, i, 0);
-                            wall[i].draw(context);
-
-                            wall[i] = new Wall(32, i, 425);
-                            wall[i].draw(context);
-
-                            i += 16;
-                    }
-                
-                    i = 0;
-                    while (i <= 425) {
-                        wall[i] = new Wall(32, 0, i);
-                        wall[i].draw(context);
-
-                        wall[i] = new Wall(32, 780, i);
-                        wall[i].draw(context);
-
-                        i += 16;
-                    }
+                i = 0;
 
                 player.move()
+
+                while (i < 320) {
+                    wall[i] = new Wall(32, 250, i*2);
+                    wall[i].draw(context);
+                    if (window.utils.intersectsWall(player, wall[i])) {
+                        player.x = player.x - vx;
+                        player.y = player.y - vy;
+                    }
+                    i += 32;
+                }
+
              
                 player.draw(context);
             }());

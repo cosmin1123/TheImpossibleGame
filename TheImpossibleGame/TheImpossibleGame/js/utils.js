@@ -194,3 +194,10 @@ window.utils.intersects = function (rectA, rectB) {
            rectA.y + rectA.height/2 < rectB.y ||
            rectB.y + rectB.height/3 < rectA.y);
 };
+
+window.utils.intersectsWall = function (rectA, rectB) {
+    return !(rectA.x + rectA.width / 2 < rectB.x ||
+             rectB.x + rectB.width / 2 < rectA.x ||
+             rectA.y + rectA.height / 2 < rectB.y ||
+             rectB.y + rectB.height / 2 < rectA.y);
+};
