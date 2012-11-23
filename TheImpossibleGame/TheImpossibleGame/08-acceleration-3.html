@@ -10,10 +10,12 @@
      
     </header>
     <canvas id="canvas" width="500" height="600" style="background-color:azure;"></canvas>
-
+    <img src="images/zombie.png" id = "zombie" style="display:none"/>
+    <img src="images/player.png" id = "player" style="display:none"/>
 
     <script src="js/utils.js"></script>
     <script src="./js/classes/Player.js"></script>
+    <script src="./js/classes/Enemy.js"></script>
     <script>
         window.onload = function () {
             var canvas = document.getElementById('canvas');
@@ -26,31 +28,52 @@
                 ax = 0,
                 ay = 0;
 
-            player.x = player.size;
-            player.y = player.size;
+            player.x = player.width;
+            player.y = player.height;
+            var enemy = new Array();
+
+            for (i = 0; i < 8; i++) {
+                if (i != 1)
+                enemy[i] = new Enemy(50, 50, i * 50, 700, 700, i + 1);
+            }
 
             window.addEventListener('keydown', function (event) {
                 switch (event.keyCode) {
                     case 37:      //left
-                        ax = -0.1;
+                        ax = -0.2;
                         break;
                     case 39:      //right
-                        ax = 0.1;
+                        ax = 0.2;
                         break;
                     case 38:      //up
-                        ay = -0.1;
+                        ay = -0.2;
                         break;
                     case 40:      //down
-                        ay = 0.1;
+                        ay = 0.2;
                         break;
                 }
             }, false);
 
-            window.addEventListener('keyup', function () {
-                ax = 0;
-                ay = 0;
-                vx = 0;
-                vy = 0;
+            window.addEventListener('keyup', function (event) {
+                switch (event.keyCode) {
+                    case 37:      //left
+                        ax = 0;
+                        vx = 0;
+                        break;
+                    case 39:      //right
+                        ax = 0;
+                        vx = 0;
+                        break;
+                    case 38:      //up
+                        ay = 0;
+                        vy = 0;
+                        break;
+                    case 40:      //down
+                        ay = 0;
+                        vy = 0;
+                        break;
+                }
+              
             }, false);
 
             (function drawFrame() {
@@ -58,7 +81,13 @@
                 context.clearRect(0, 0, canvas.width, canvas.height);
 
                 player.move()
-
+                for (i = 0; i < 8; i++) {
+                    if (i != 1) {
+                        enemy[i].move(player);
+                        enemy[i].draw(context);
+                    }
+                }
+         
                 player.draw(context);
             }());
         };

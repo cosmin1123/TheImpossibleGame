@@ -189,8 +189,8 @@ window.utils.containsPoint = function (rect, x, y) {
  * @return {boolean}
  */
 window.utils.intersects = function (rectA, rectB) {
-  return !(rectA.x + rectA.width < rectB.x ||
-           rectB.x + rectB.width < rectA.x ||
-           rectA.y + rectA.height < rectB.y ||
-           rectB.y + rectB.height < rectA.y);
+  return !(rectA.x + rectA.width/2 < rectB.x ||
+           rectB.x + rectB.width/3 < rectA.x ||
+           rectA.y + rectA.height/2 < rectB.y ||
+           rectB.y + rectB.height/3 < rectA.y);
 };
