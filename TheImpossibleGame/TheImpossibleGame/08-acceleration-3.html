@@ -89,13 +89,27 @@
                 context.clearRect(0, 0, canvas.width, canvas.height);
 
                 i=0;
-                    while (i < 200 ) {
-                            wall[i] = new Wall(32, 0, i);
+                    while (i <= 800 ) {
+                            wall[i] = new Wall(32, i, 0);
                             wall[i].draw(context);
-                            i+=32;   
+
+                            wall[i] = new Wall(32, i, 425);
+                            wall[i].draw(context);
+
+                            i += 16;
                     }
                 
-              
+                    i = 0;
+                    while (i <= 425) {
+                        wall[i] = new Wall(32, 0, i);
+                        wall[i].draw(context);
+
+                        wall[i] = new Wall(32, 780, i);
+                        wall[i].draw(context);
+
+                        i += 16;
+                    }
+
                 player.move()
              
                 player.draw(context);
