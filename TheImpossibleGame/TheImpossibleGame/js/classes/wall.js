@@ -25,19 +25,3 @@ Wall.prototype.draw = function (context) {
 
     context.restore();
 };
-
-Wall.prototype.hitWall = function (player, ax, ay) {
-    if(this.x + this.width/2 > player.x  && ax < 0){
-        vx = 0;
-        ax = 0;
-        return 1;
-    }
-    if(player.x + player.width/2 < this.x && ax > 0 ){
-        vx = 0;
-        ax = 0;
-        return 2;
-    }
-            //  rectA.y + rectA.height / 2 < rectB.y 
-          //    rectB.y + rectB.height / 3 < rectA.y
-
-}
