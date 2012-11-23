@@ -12,11 +12,14 @@
     <canvas id="canvas" width="500" height="600" style="background-color:azure;"></canvas>
     <img src="images/zombie.png" id = "zombie" style="display:none"/>
     <img src="images/player.png" id = "player" style="display:none"/>
-
+    <img src="images/brick_wall.png" id = "wall" style="display:none"/>
+    
     <script src="js/utils.js"></script>
     <script src="./js/classes/Player.js"></script>
     <script src="./js/classes/Enemy.js"></script>
-    <script>
+    <script src="./js/classes/wall.js"></script>
+    
+     <script>
         window.onload = function () {
             var canvas = document.getElementById('canvas');
             context = canvas.getContext('2d');
@@ -30,12 +33,15 @@
 
             player.x = player.width;
             player.y = player.height;
-            var enemy = new Array();
 
-            for (i = 0; i < 8; i++) {
-                if (i != 1)
-                enemy[i] = new Enemy(50, 50, i * 50, 700, 700, i + 1);
-            }
+         
+
+           var wall = new Array();
+
+           
+
+
+            
 
             window.addEventListener('keydown', function (event) {
                 switch (event.keyCode) {
@@ -76,18 +82,22 @@
               
             }, false);
 
+          
+
             (function drawFrame() {
                 window.requestAnimationFrame(drawFrame, canvas);
                 context.clearRect(0, 0, canvas.width, canvas.height);
 
-                player.move()
-                for (i = 0; i < 8; i++) {
-                    if (i != 1) {
-                        enemy[i].move(player);
-                        enemy[i].draw(context);
+                i=0;
+                    while (i < 200 ) {
+                            wall[i] = new Wall(32, 0, i);
+                            wall[i].draw(context);
+                            i+=32;   
                     }
-                }
-         
+                
+              
+                player.move()
+             
                 player.draw(context);
             }());
         };
