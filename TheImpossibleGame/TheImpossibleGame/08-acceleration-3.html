@@ -91,33 +91,36 @@
 
                 player.move()
 
-
-                                i=0;
-                                    while (i <= 800 ) {
-                                                wall[i] = new Wall(32, i, 0);
-                                               wall[i].draw(context);
-                                               if (window.utils.intersectsWall(player, wall[i])) {
-                                                   player.x = player.x - vx;
-                                                   player.y = player.y - vy;
-                                               }
-                                                 wall[i] = new Wall(32, i, 425);
-                                                wall[i].draw(context);
-                                                if (window.utils.intersectsWall(player, wall[i])) {
-                                                    player.x = player.x - vx;
-                                                    player.y = player.y - vy;
-                                                }
-                                                i += 16;
-                                        }
-                                
+                
+                i=0;
+                while (i <= canvas.width) {
+                    wall[i] = new Wall(32, i, 0);
+                    wall[i].draw(context);
+                    if (window.utils.intersectsWall(player, wall[i])) {
+                        player.x = player.x - vx;
+                        player.y = player.y - vy;
+                    }
+                    wall[i] = new Wall(32, i, canvas.height/2 - 16);
+                    wall[i].draw(context);
+                    if (window.utils.intersectsWall(player, wall[i])) {
+                        player.x = player.x - vx;
+                        player.y = player.y - vy;
+                    }
+                    i += 16;
+                }
+                context.font="50px Arial";
+                context.fillText(canvas.height, 100, 100);
+                context.fillText(canvas.width, 200, 200);
+                               
                                     i = 0;
-                                    while (i <= 425) {
+                                    while (i <= canvas.height -100) {
                                         wall[i] = new Wall(32, 0, i);
                                         wall[i].draw(context);
                                         if (window.utils.intersectsWall(player, wall[i])) {
                                             player.x = player.x - vx;
                                             player.y = player.y - vy;
                                         }
-                                        wall[i] = new Wall(32, 780, i);
+                                        wall[i] = new Wall(32, canvas.width/2 -16, i);
                                         wall[i].draw(context);
                                         if (window.utils.intersectsWall(player, wall[i])) {
                                             player.x = player.x - vx;
