@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Acceleration 3</title>
-    <link rel="stylesheet" href="../include/style.css">
   </head>
-  <body style="background-color:black">
+  <body style="background-color:black; margin-left:0px;margin-top:0px;margin-bottom:0px;padding:0px">
     <header>
      
     </header>
@@ -23,8 +22,8 @@
         window.onload = function () {
             var canvas = document.getElementById('canvas');
             context = canvas.getContext('2d');
-            canvas.width = window.innerWidth - 15;
-            canvas.height = window.innerHeight - 20;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
                 player = new Player();
                 vx = 0,
                 vy = 0,
