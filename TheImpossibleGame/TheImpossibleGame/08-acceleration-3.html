@@ -39,7 +39,7 @@
 
            var wall = new Array();
 
-           
+           var enemy = new Enemy(50, 100, 100, 600, 600, 3);
 
 
             
@@ -91,7 +91,8 @@
 
 
                 player.move()
-
+                enemy.move(player);
+                enemy.draw(context);
                 
                 i=0;
                 while (i <= canvas.width) {
