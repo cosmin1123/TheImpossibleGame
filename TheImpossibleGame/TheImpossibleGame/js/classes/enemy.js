@@ -20,6 +20,9 @@ function Enemy(id, type, startX, startY, value, speed) {
         this.endY = this.startY + this.value;
         this.side = 1; // it only counts for type == "square" || type == "diamond"
     }
+    if (type == "sinus") {
+        this.sector = 1;
+    }
 }
 
 Enemy.prototype.move = function (player) {
@@ -105,6 +108,13 @@ Enemy.prototype.move = function (player) {
             this.side = 4;
         if (this.x == this.startX && this.y == this.startY)
             this.side = 1;
+    }
+    //Not implemented yet
+    if (this.type == "sinus") {
+        this.x += 1;
+        this.y = this.y + Math.sin(2 * Math.PI * (this.x / 50)) * 10 ;
+
+
     }
 }
 
