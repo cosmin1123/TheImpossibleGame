@@ -1,55 +1,115 @@
-﻿function Enemy(size,startX,startY, endX,endY,speed) {
-    if (size === undefined) { size = 50; }
-   
+﻿// Depending on the type of the enemy , value can represent: 
+// distance ( for vertical/horizontal/diagonal enemies)
+// radius ( for circle enemies)  PS: Not implemented yet
+// length of a side (for square enemies)
+function Enemy(id, type, startX, startY, value, speed) {
+    this.img = document.getElementById(id);
+    this.type = type;
+    this.value = value;
     this.x = startX;
     this.y = startY;
-    this.width = size;
-    this.height = size;
-    this.scaleX = 1;
-    this.scaleY = 1;
-    this.lineWidth = 1;
     this.speed = speed;
-    
-    this.endX = endX;
-    this.endY = endY;
     this.startX = startX;
     this.startY = startY;
+    if (type == "vertical")
+        this.endY = this.startY + this.value;
+    if (type == "horizontal")
+        this.endX = this.startX + this.value;
+    if (type == "diagonal" || type == "square" || type == "diamond") {
+        this.endX = this.startX + this.value;
+        this.endY = this.startY + this.value;
+        this.side = 1; // it only counts for type == "square" || type == "diamond"
+    }
 }
 
 Enemy.prototype.move = function (player) {
 
-    if (this.x > this.endX - this.width)
-        this.speed = -3;
-    if (this.x < this.startX)
-        this.speed = 3;
+    if (this.type == "horizontal") {
 
-    if (this.y > this.endY - this.height)
-        this.speed = -3;
-    if (this.y < this.startY)
-        this.speed = 3;
-
-    this.x += this.speed;
-    if (window.utils.intersects(this, player)) {
-        player.x = player.width;
-        player.y = player.height;
+        if (this.startX <= this.endX)
+            this.direction = 1;
+        else
+            this.direction = -1;
+        this.x += this.speed * this.direction;
+        if (this.x == this.startX || this.x == this.endX)
+            this.speed *= (-1);
     }
 
- //   this.y += this.speed;
+    if (this.type == "vertical") {
 
+        if (this.startY <= this.endY)
+            this.direction = 1;
+        else
+            this.direction = -1;
+        this.y += this.speed * this.direction;
+        if (this.y == this.startY || this.y == this.endY)
+            this.speed *= (-1);
+    }
+
+    if (this.type == "diagonal") {
+
+        if (this.startX <= this.endX)
+            this.direction = 1;
+        else
+            this.direction = -1;
+        this.x += this.speed * this.direction;
+        this.y += this.speed * this.direction;
+        if (this.x == this.startX || this.x == this.endX)
+            this.speed *= (-1);
+    }
+
+    if (this.type == "square") {
+
+        if (this.side == 1)
+            this.x += this.speed;
+        if (this.side == 2)
+            this.y += this.speed;
+        if (this.side == 3)
+            this.x -= this.speed;
+        if (this.side == 4)
+            this.y -= this.speed;
+
+        if (this.x == this.endX && this.y == this.startY)
+            this.side = 2;
+        if (this.x == this.endX && this.y == this.endY)
+            this.side = 3;
+        if (this.x == this.startX && this.y == this.endY)
+            this.side = 4;
+        if (this.x == this.startX && this.y == this.startY)
+            this.side = 1;
+
+    }
+    // diamond is not ready. Do not use!
+    if (this.type == "diamond") {
+        if (this.side == 1) {
+            this.x += this.speed;
+            this.y += this.speed;
+        }
+        if (this.side == 2) {
+            this.x -= this.speed;
+            this.y += this.speed;
+        }
+        if (this.side == 3) {
+            this.x -= this.speed;
+            this.y -= this.speed;
+        }
+        if (this.side == 4) {
+            this.x += this.speed;
+            this.y -= this.speed;
+        }
+        if (this.x == this.startX + this.value/2 && this.y == this.startY + this.value/2)
+            this.side = 2;
+        if (this.x == this.endX && this.y == this.endY)
+            this.side = 3;
+        if (this.x == this.startX && this.y == this.endY)
+            this.side = 4;
+        if (this.x == this.startX && this.y == this.startY)
+            this.side = 1;
+    }
 }
 
 Enemy.prototype.draw = function (context) {
-
-
     context.save();
-    context.translate(this.x, this.y);
-    context.scale(this.scaleX, this.scaleY);
-
-    var img = document.getElementById("zombie");
-    img.height = this.height;
-    img.width = this.width;
-
-    context.drawImage(img, this.x, this.y);
-
+    context.drawImage(this.img, this.x, this.y, 20, 20); // 20 is the Scale of the image.
     context.restore();
 };

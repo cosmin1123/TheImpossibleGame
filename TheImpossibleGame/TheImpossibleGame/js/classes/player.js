@@ -1,14 +1,8 @@
-function Player (size, color) {
-  if (size === undefined) { size = 50; }
-  if (color === undefined) { color = "#ff0000"; }
-  this.x = 0;
-  this.y = 0;
-  this.width = size;
-  this.height = size;
-  this.scaleX = 1;
-  this.scaleY = 1;
-  this.color = utils.parseColor(color);
-  this.lineWidth = 1;
+function Player (id,scale,posX,posY) {
+  this.img = document.getElementById(id);
+  this.x = posX;
+  this.y = posY;
+  this.scale =scale;
 }
 
 Player.prototype.move = function () {
@@ -24,16 +18,7 @@ Player.prototype.move = function () {
 
 Player.prototype.draw = function (context) {
 
-
   context.save();
-  context.translate(this.x, this.y);
-  context.scale(this.scaleX, this.scaleY);
-  
-  context.lineWidth = this.lineWidth;
-  context.fillStyle = this.color;
-
-  var img = document.getElementById("player");
-  context.drawImage(img, this.x, this.y);
-
+  context.drawImage(this.img, this.x, this.y,this.scale,this.scale);
   context.restore();
 };

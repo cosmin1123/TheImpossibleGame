@@ -7,18 +7,17 @@
 
   <body style="background-color:black;margin:0">
 
-    <header>
-     
-    </header>
-    <canvas id="canvas" width="500" height="600" style="background-color:azure;display:block"></canvas>
-    <img src="images/zombie.png" id = "zombie" style="display:none"/>
+    
+    <canvas id="canvas" style="background-color:azure;display:block"></canvas>
+    <img src="images/fireball.png" id = "obstacle" style="display:none"/>
+    <img src="images/shuriken.png" id = "obstacle2" style="display:none"/>
     <img src="images/player.png" id = "player" style="display:none"/>
     <img src="images/brick_wall.png" id = "wall" style="display:none"/>
     
     <script src="js/utils.js"></script>
     <script src="./js/classes/player.js"></script>
     <script src="./js/classes/enemy.js"></script>
-    <script src="./js/classes/wall.js"></script>
+    <script src="./js/classes/draw_wall.js"></script>
     
      <script>
         window.onload = function () {
@@ -26,24 +25,45 @@
             context = canvas.getContext('2d');
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-                player = new Player();
+                player = new Player("player",30,50,50);
                 vx = 0,
                 vy = 0,
                 ax = 0,
                 ay = 0;
-
-            player.x = player.width;
-            player.y = player.height;
-
-         
-
-           var wall = new Array();
-
-           var enemy = new Enemy(50, 100, 100, 600, 600, 3);
-
-
+                var enemy = new Array;
+            // Chestie draguta de vazut
+            //enemy[25] = new Enemy("obstacle", "vertical", 100, 100, 300, 2);
+            //enemy[26] = new Enemy("obstacle", "vertical", 100, 300, 100, 2);
             
+               
+            enemy[1] = new Enemy("obstacle", "vertical", 140, 360, 120 , 2);
+            enemy[2] = new Enemy("obstacle", "vertical", 180, 480, -120, 2);
+            enemy[3] = new Enemy("obstacle", "vertical", 220, 360, 120, 2);
+            enemy[4] = new Enemy("obstacle", "vertical", 260, 480, -120, 2);
+            enemy[5] = new Enemy("obstacle", "vertical", 300, 360, 120, 2);
+            enemy[6] = new Enemy("obstacle", "vertical", 340, 480, -120, 2);
+            enemy[7] = new Enemy("obstacle", "vertical", 380, 360, 120, 2);
+            enemy[8] = new Enemy("obstacle", "vertical", 420, 480, -120, 2);
+            enemy[9] = new Enemy("obstacle", "vertical", 460, 360, 120, 2);
+            enemy[10] = new Enemy("obstacle", "vertical", 500, 480, -120, 2);
 
+            enemy[11] = new Enemy("obstacle", "square", 560, 360, 120, 2);
+            enemy[12] = new Enemy("obstacle", "square", 580, 360, 100, 2);
+            enemy[13] = new Enemy("obstacle", "square", 600, 360, 80, 2);
+            enemy[14] = new Enemy("obstacle", "square", 620, 360, 60, 2);
+
+            enemy[15] = new Enemy("obstacle", "horizontal", 180, 270, 620, 5);
+            enemy[16] = new Enemy("obstacle", "horizontal", 180, 320, 620, 5);
+            enemy[17] = new Enemy("obstacle", "horizontal", 800, 300, -620, 5);
+            enemy[18] = new Enemy("obstacle", "horizontal", 180, 520, 620, 5);
+            enemy[19] = new Enemy("obstacle", "horizontal", 180, 580, 620, 5);
+            enemy[20] = new Enemy("obstacle", "horizontal", 800, 550, -620, 5);
+
+
+            enemy[21] = new Enemy("obstacle", "diagonal", 390, 230, -210, 5);
+            enemy[22] = new Enemy("obstacle", "diagonal", 200, 20, 210, 10);
+            enemy[23] = new Enemy("obstacle", "diagonal", 430, 230, -210, 10);
+            enemy[24] = new Enemy("obstacle", "diagonal", 240, 20, 210, 5);
             window.addEventListener('keydown', function (event) {
                 switch (event.keyCode) {
                     case 37:      //left
@@ -82,55 +102,37 @@
                 }
               
             }, false);
-
-          
+           
+            
 
             (function drawFrame() {
                 window.requestAnimationFrame(drawFrame, canvas);
                 context.clearRect(0, 0, canvas.width, canvas.height);
+                //border walls
+                wall_horizontal(context, 0, 0, canvas.width,20); // 20 is the scale of the image
+                wall_vertical(context, 0, 0, canvas.height,20);
+                wall_horizontal(context, 0, canvas.height-20, canvas.width,20);
+                wall_vertical(context, canvas.width-20, 0, canvas.height-20, 20); 
+                //map walls
+                wall_vertical(context, 100, 0, 380,20);
+                wall_vertical(context, 100, 460, canvas.height-20, 20);
+                wall_horizontal(context, 120, 340, 700, 20);
+                wall_horizontal(context, 120, 500, 700, 20);
+                wall_vertical(context, 840, 160, 660, 20);
+                wall_horizontal(context, 180, 250, 820, 20);
+                wall_horizontal(context, 180, 600, 820, 20);
 
 
-                player.move()
-                enemy.move(player);
-                enemy.draw(context);
-                
-                i=0;
-                while (i <= canvas.width) {
-                    wall[i] = new Wall(32, i, 0);
-                    wall[i].draw(context);
-                    if (window.utils.intersectsWall(player, wall[i])) {
-                        player.x = player.x - vx;
-                        player.y = player.y - vy;
-                    }
-                    wall[i] = new Wall(32, i, canvas.height/2 - 16);
-                    wall[i].draw(context);
-                    if (window.utils.intersectsWall(player, wall[i])) {
-                        player.x = player.x - vx;
-                        player.y = player.y - vy;
-                    }
-                    i += 16;
-                }
-                               
-                                    i = 0;
-                                    while (i <= canvas.height ) {
-                                        wall[i] = new Wall(32, 0, i);
-                                        wall[i].draw(context);
-                                        if (window.utils.intersectsWall(player, wall[i])) {
-                                            player.x = player.x - vx;
-                                            player.y = player.y - vy;
-                                        }
-                                        wall[i] = new Wall(32, canvas.width/2 -16, i);
-                                        wall[i].draw(context);
-                                        if (window.utils.intersectsWall(player, wall[i])) {
-                                            player.x = player.x - vx;
-                                            player.y = player.y - vy;
-                                        }
-                                        i += 16
-                                    }
- 
-                                           
-
+                player.move();
                 player.draw(context);
+                
+                for (var i = 1; i < enemy.length;i++){
+                    enemy[i].draw(context);
+                    enemy[i].move(player);
+                }
+
+
+
             }());
         };
     </script>
