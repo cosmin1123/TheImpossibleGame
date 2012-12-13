@@ -9,8 +9,8 @@ function wall_vertical(context, fromX,fromY, toY,scale, player) {
              fromX + scale < player.x ||
              player.y + player.height < fromY ||
              fromY + scale  < player.y)) {
- 			 player.x = player.XBefore
-             player.y = player.YBefore;
+ 			 player.x = player.startX;
+             player.y = player.startY;
              }
           
         fromY += scale;
