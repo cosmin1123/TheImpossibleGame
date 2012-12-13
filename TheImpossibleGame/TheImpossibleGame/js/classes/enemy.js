@@ -13,8 +13,6 @@ function Enemy(id, type, startX, startY, value, speed, height, width) {
     this.startY = startY;
     this.height = height;
     this.width = width;
-    this.initialX = startX;
-    this.initialY = startY;
     
     if (type == "vertical")
         this.endY = this.startY + this.value;
@@ -118,7 +116,7 @@ Enemy.prototype.move = function (player) {
 
     if (this.type == "sinus") {
         this.x += this.speed;
-        this.y = this.initialY + Math.sin(2 * Math.PI * (this.x / 50)) * 20 ;
+        this.y = this.startY + Math.sin(2 * Math.PI * (this.x / 50)) * 20 ;
         if( this.x > this.startX + this.value){
         	this.speed = this.speed * (-1);
         }
