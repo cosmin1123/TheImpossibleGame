@@ -1,8 +1,9 @@
-function Player (id,scale,posX,posY) {
+function Player (id,width, height,posX,posY) {
   this.img = document.getElementById(id);
   this.x = posX;
   this.y = posY;
-  this.scale =scale;
+  this.width = width;
+  this.height = height;
 }
 
 Player.prototype.move = function () {
@@ -19,6 +20,6 @@ Player.prototype.move = function () {
 Player.prototype.draw = function (context) {
 
   context.save();
-  context.drawImage(this.img, this.x, this.y,this.scale,this.scale);
+  context.drawImage(this.img, this.x, this.y,this.width,this.height);
   context.restore();
 };

@@ -2,7 +2,7 @@
 // distance ( for vertical/horizontal/diagonal enemies)
 // radius ( for circle enemies)  PS: Not implemented yet
 // length of a side (for square enemies)
-function Enemy(id, type, startX, startY, value, speed) {
+function Enemy(id, type, startX, startY, value, speed, height, width) {
     this.img = document.getElementById(id);
     this.type = type;
     this.value = value;
@@ -11,6 +11,9 @@ function Enemy(id, type, startX, startY, value, speed) {
     this.speed = speed;
     this.startX = startX;
     this.startY = startY;
+    this.height = height;
+    this.width = width;
+    
     if (type == "vertical")
         this.endY = this.startY + this.value;
     if (type == "horizontal")
@@ -120,6 +123,7 @@ Enemy.prototype.move = function (player) {
 
 Enemy.prototype.draw = function (context) {
     context.save();
-    context.drawImage(this.img, this.x, this.y, 20, 20); // 20 is the Scale of the image.
+    context.drawImage(this.img, this.x, this.y, this.width, this.height); 
+    			// 20 is the Scale of the image.
     context.restore();
 };
