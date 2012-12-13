@@ -28,8 +28,8 @@ function wall_horizontal(context, fromX,fromY, toX,scale, player) {
              fromX + scale < player.x ||
              player.y + player.height < fromY ||
              fromY + scale  < player.y)) {
-              player.x = player.XBefore
-              player.y = player.YBefore;
+              player.x = player.startX
+              player.y = player.startY;
              }
              
         fromX += scale;
