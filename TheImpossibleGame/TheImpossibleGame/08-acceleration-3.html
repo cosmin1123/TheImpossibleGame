@@ -112,6 +112,11 @@
             (function drawFrame() {
                 window.requestAnimationFrame(drawFrame, canvas);
                 context.clearRect(0, 0, canvas.width, canvas.height);
+                //player moving
+                
+                player.move();
+
+                
                 //border walls
                 wall_horizontal(context, 0, 0, canvas.width,20, player); // 20 is the scale of the image
                 wall_vertical(context, 0, 0, canvas.height,20, player);
@@ -127,15 +132,14 @@
                 wall_horizontal(context, 180, 600, 820, 20, player);
 
 
-                player.move();
-                player.draw(context);
+                
                 
                 for (var i = 1; i < enemy.length;i++){
                     enemy[i].draw(context);
                     enemy[i].move(player);
                 }
 
-
+                player.draw(context);
 
             }());
         };
