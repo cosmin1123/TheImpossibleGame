@@ -125,5 +125,19 @@ Enemy.prototype.draw = function (context) {
     context.save();
     context.drawImage(this.img, this.x, this.y, this.width, this.height); 
     			// 20 is the Scale of the image.
+    			
+    if(!(player.x + player.width < this.x ||
+             this.x + this.width < player.x ||
+             player.y + player.height < this.y ||
+             this.y + this.height  < player.y))
+    	{
+    		playerDies();
+    	}         
+             
     context.restore();
 };
+
+function playerDies(){
+	player.x = 40;
+	player.y = 40;
+}
