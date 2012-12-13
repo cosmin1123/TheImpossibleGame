@@ -4,8 +4,8 @@ function Player (id,width, height,posX,posY) {
   this.y = posY;
   this.width = width;
   this.height = height;
-  this.XBefore = posX;
-  this.YBefore = posY;
+  this.startX = posX;
+  this.startY = posY;
 }
 
 Player.prototype.move = function () {
