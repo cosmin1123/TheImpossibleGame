@@ -12,6 +12,7 @@ function wall_vertical(context, fromX,fromY, toY,scale, player) {
  			 player.x = player.XBefore
              player.y = player.YBefore;
              }
+          
         fromY += scale;
     }
     context.restore();
