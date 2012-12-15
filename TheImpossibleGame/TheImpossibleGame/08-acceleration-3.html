@@ -26,17 +26,24 @@
 	     var vy = 0;
         var ax = 0;
         var ay = 0;
-        
+        var scalePercentageX = 0;
         window.onload = function () {
             var canvas = document.getElementById('canvas');
             context = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            
+            scalePercentageX = window.innerWidth / 1600;
+            scalePercentageY = window.innerHeight / 900;
+            
+            canvas.width = 1600 * scalePercentageX;
+            canvas.height = 900 * scalePercentageY;
+            
             console.log(window.innerWidth);
             console.log(window.innerHeight);
-                player = new Player("player",30,30,50,50);
+            player = new Player("player",Math.round(30 * scalePercentageX),
+            Math.round(30 * scalePercentageY), Math.round(50 * scalePercentageX),
+            Math.round(50 * scalePercentageY));
                 
-                var enemy = new Array;
+            var enemy = new Array;
             // Chestie draguta de vazut
             //enemy[25] = new Enemy("obstacle", "vertical", 100, 100, 300, 2, 20, 20);
             //enemy[26] = new Enemy("obstacle", "vertical", 100, 300, 100, 2, 20, 20);
