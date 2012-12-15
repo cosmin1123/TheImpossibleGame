@@ -25,6 +25,8 @@
             context = canvas.getContext('2d');
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            console.log(window.innerWidth);
+            console.log(window.innerHeight);
                 player = new Player("player",30,30,50,50);
                 vx = 0,
                 vy = 0,
@@ -35,7 +37,7 @@
             //enemy[25] = new Enemy("obstacle", "vertical", 100, 100, 300, 2, 20, 20);
             //enemy[26] = new Enemy("obstacle", "vertical", 100, 300, 100, 2, 20, 20);
             
-         /*    
+             
             enemy[1] = new Enemy("obstacle", "vertical", 140, 360, 120 , 2, 20, 20);
             enemy[2] = new Enemy("obstacle", "vertical", 180, 480, -120, 2, 20, 20);
             enemy[3] = new Enemy("obstacle", "vertical", 220, 360, 120, 2, 20, 20);
@@ -64,23 +66,23 @@
             enemy[22] = new Enemy("obstacle", "diagonal", 200, 20, 210, 10, 20, 20);
             enemy[23] = new Enemy("obstacle", "diagonal", 430, 230, -210, 10, 20, 20);
             enemy[24] = new Enemy("obstacle", "diagonal", 240, 20, 210, 5, 20, 20);
-            */
-                enemy[1] = new Enemy("obstacle", "sinus", 400, 200, 210, 2,20,20);
+            
+               // enemy[1] = new Enemy("obstacle", "sinus", 400, 200, 210, 2,20,20);
 
 
             window.addEventListener('keydown', function (event) {
                 switch (event.keyCode) {
                     case 37:      //left
-                        ax = -0.2;
+                        ax = -1;
                         break;
                     case 39:      //right
-                        ax = 0.2;
+                        ax = 1;
                         break;
                     case 38:      //up
-                        ay = -0.2;
+                        ay = -1;
                         break;
                     case 40:      //down
-                        ay = 0.2;
+                        ay = 1;
                         break;
                 }
             }, false);
@@ -111,13 +113,14 @@
 
             (function drawFrame() {
                 window.requestAnimationFrame(drawFrame, canvas);
-                context.clearRect(0, 0, canvas.width, canvas.height);
+//                context.clearRect(0, 0, canvas.width, canvas.height);
                 //player moving
                 
                 player.move();
 
                 
                 //border walls
+                /*
                 wall_horizontal(context, 0, 0, canvas.width,20, player); // 20 is the scale of the image
                 wall_vertical(context, 0, 0, canvas.height,20, player);
                 wall_horizontal(context, 0, canvas.height-20, canvas.width,20, player);
@@ -131,15 +134,13 @@
                 wall_horizontal(context, 180, 250, 820, 20, player);
                 wall_horizontal(context, 180, 600, 820, 20, player);
 
-
+*/
                 
                 
                 for (var i = 1; i < enemy.length;i++){
                     enemy[i].draw(context);
                     enemy[i].move(player);
                 }
-
-                player.draw(context);
 
             }());
         };

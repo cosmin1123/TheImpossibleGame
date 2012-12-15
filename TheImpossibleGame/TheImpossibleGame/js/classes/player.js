@@ -14,16 +14,17 @@ Player.prototype.move = function () {
         vx += ax;
     if (vy < 4 && vy > -4)
         vy += ay;
+    context.clearRect(this.x, 
+    this.y, this.width, this.height); 
+ 
     player.XBefore = player.x;
     player.YBefore = player.y;
     player.x += vx;
     player.y += vy;
+    
+     
+    context.save();
+    context.drawImage(this.img, this.x, this.y,this.width,this.height);
+    context.restore();
 
 }
-
-Player.prototype.draw = function (context) {
-
-  context.save();
-  context.drawImage(this.img, this.x, this.y,this.width,this.height);
-  context.restore();
-};
