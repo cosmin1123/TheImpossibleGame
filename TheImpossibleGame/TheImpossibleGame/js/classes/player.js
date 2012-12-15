@@ -15,8 +15,7 @@ Player.prototype.move = function () {
     if (vy < 4 && vy > -4)
         vy += ay;
         
-    context.clearRect(this.x, 
-    this.y, this.width, this.height); 
+    context.clearRect(this.x, this.y, this.width, this.height); 
  
     player.XBefore = player.x;
     player.YBefore = player.y;
