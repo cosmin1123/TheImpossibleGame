@@ -133,14 +133,10 @@
                 //player moving
                 
                 player.move();
-                
-                
-          
-                
-                
                 for (var i = 1; i < enemy.length;i++){
-                    enemy[i].draw(context);
-                    enemy[i].move(player);
+                    enemy[i].move();
+                    enemy[i].draw();
+                    
                 }
 
             }());
