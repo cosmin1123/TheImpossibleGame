@@ -20,6 +20,12 @@
     <script src="./js/classes/draw_wall.js"></script>
     
      <script>
+     
+		  var vx = 0;
+	     var vy = 0;
+        var ax = 0;
+        var ay = 0;
+        
         window.onload = function () {
             var canvas = document.getElementById('canvas');
             context = canvas.getContext('2d');
@@ -28,10 +34,7 @@
             console.log(window.innerWidth);
             console.log(window.innerHeight);
                 player = new Player("player",30,30,50,50);
-                vx = 0,
-                vy = 0,
-                ax = 0,
-                ay = 0;
+                
                 var enemy = new Array;
             // Chestie draguta de vazut
             //enemy[25] = new Enemy("obstacle", "vertical", 100, 100, 300, 2, 20, 20);
@@ -67,7 +70,7 @@
             enemy[23] = new Enemy("obstacle", "diagonal", 430, 230, -210, 10, 20, 20);
             enemy[24] = new Enemy("obstacle", "diagonal", 240, 20, 210, 5, 20, 20);
             
-               // enemy[1] = new Enemy("obstacle", "sinus", 400, 200, 210, 2,20,20);
+              //  enemy[1] = new Enemy("obstacle", "sinus", 400, 200, 210, 2,20,20);
 
 
             window.addEventListener('keydown', function (event) {
@@ -113,28 +116,13 @@
 
             (function drawFrame() {
                 window.requestAnimationFrame(drawFrame, canvas);
-//                context.clearRect(0, 0, canvas.width, canvas.height);
+
                 //player moving
                 
                 player.move();
 
                 
-                //border walls
-                /*
-                wall_horizontal(context, 0, 0, canvas.width,20, player); // 20 is the scale of the image
-                wall_vertical(context, 0, 0, canvas.height,20, player);
-                wall_horizontal(context, 0, canvas.height-20, canvas.width,20, player);
-                wall_vertical(context, canvas.width-20, 0, canvas.height-20, 20, player); 
-                //map walls
-                wall_vertical(context, 100, 0, 380,20, player);
-                wall_vertical(context, 100, 460, canvas.height-20, 20, player);
-                wall_horizontal(context, 120, 340, 700, 20, player);
-                wall_horizontal(context, 120, 500, 700, 20, player);
-                wall_vertical(context, 840, 160, 660, 20, player);
-                wall_horizontal(context, 180, 250, 820, 20, player);
-                wall_horizontal(context, 180, 600, 820, 20, player);
-
-*/
+          
                 
                 
                 for (var i = 1; i < enemy.length;i++){
@@ -147,4 +135,3 @@
     </script>
   </body>
 </html>
-

@@ -4,8 +4,8 @@ function Player (id,width, height,posX,posY) {
   this.y = posY;
   this.width = width;
   this.height = height;
-  this.XBefore = posX;
-  this.YBefore = posY;
+  this.startX = posX;
+  this.startY = posY;
 }
 
 Player.prototype.move = function () {
@@ -14,11 +14,13 @@ Player.prototype.move = function () {
         vx += ax;
     if (vy < 4 && vy > -4)
         vy += ay;
+        
     context.clearRect(this.x, 
     this.y, this.width, this.height); 
  
     player.XBefore = player.x;
     player.YBefore = player.y;
+    
     player.x += vx;
     player.y += vy;
     
