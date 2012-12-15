@@ -131,7 +131,7 @@ Enemy.prototype.move = function (player) {
 Enemy.prototype.draw = function (context) {
     context.save();
     context.drawImage(this.img, this.x, this.y, this.width, this.height); 
-    			// 20 is the Scale of the image.
+    		
     			
     if(!(player.x + player.width < this.x ||
              this.x + this.width < player.x ||
