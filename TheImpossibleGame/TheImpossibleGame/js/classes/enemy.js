@@ -131,13 +131,9 @@ Enemy.prototype.move = function (player) {
 Enemy.prototype.draw = function (context) {
     context.save();
     context.drawImage(this.img, this.x, this.y, this.width, this.height); 
-    		
-    			
-    if(!(player.x + player.width < this.x ||
-             this.x + this.width < player.x ||
-             player.y + player.height < this.y ||
-             this.y + this.height  < player.y))
-    	{
+	
+    if(collision(this, player))
+    	{    		
     		playerDies();
     	}         
              
@@ -148,4 +144,12 @@ function playerDies(){
 	context.clearRect(player.x, player.y, player.width, player.height);
 	player.x = 40;
 	player.y = 40;
+}
+
+function collision(c1, c2) {
+  var dx = c1.x - c2.x;
+  var dy = c1.y - c2.y;
+  var dist = c1.width/2 + c2.width/2;
+ 
+  return (dx * dx + dy * dy <= dist * dist)
 }
