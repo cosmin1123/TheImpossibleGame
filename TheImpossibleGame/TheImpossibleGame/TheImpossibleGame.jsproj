@@ -67,6 +67,7 @@
     <Content Include="js\classes\enemy.js" />
     <Content Include="js\classes\player.js" />
     <Content Include="js\classes\draw_wall.js" />
+    <Content Include="js\classes\map.js" />
     <Content Include="js\classes\wall.js" />
     <Content Include="js\utils.js" />
     <None Include="TheImpossibleGame_TemporaryKey.pfx" />

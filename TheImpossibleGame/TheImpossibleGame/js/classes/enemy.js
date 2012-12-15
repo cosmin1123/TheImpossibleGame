@@ -13,8 +13,7 @@ function Enemy(id, type, startX, startY, value, speed, height, width) {
     this.startX = startX;
     this.startY = startY;
     this.height = height;
-    this.width = width;
-    
+    this.width = width; 
     if (type == "vertical")
         this.endY = this.startY + this.value;
     if (type == "horizontal")
