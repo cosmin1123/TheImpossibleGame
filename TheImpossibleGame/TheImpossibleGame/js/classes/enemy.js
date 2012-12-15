@@ -145,6 +145,7 @@ Enemy.prototype.draw = function (context) {
 };
 
 function playerDies(){
+	context.clearRect(player.x, player.y, player.width, player.height);
 	player.x = 40;
 	player.y = 40;
 }
