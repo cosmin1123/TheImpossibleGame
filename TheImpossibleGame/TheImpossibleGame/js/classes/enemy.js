@@ -2,6 +2,7 @@
 // distance ( for vertical/horizontal/diagonal enemies)
 // radius ( for circle enemies)  PS: Not implemented yet
 // length of a side (for square enemies)
+var context = document.getElementById('canvas').getContext;
 function Enemy(id, type, startX, startY, value, speed, height, width) {
     this.img = document.getElementById(id);
     this.type = type;
@@ -26,12 +27,15 @@ function Enemy(id, type, startX, startY, value, speed, height, width) {
     if (type == "sinus") {
         this.sector = 1;
     }
+    context.save();
+    context.drawImage(this.img, this.x, this.y, this.width, this.height);
+    context.restore();
 }
 
-Enemy.prototype.move = function (player) {
+Enemy.prototype.move = function () {
 
     if (this.type == "horizontal") {
-
+        context.clearRect(this.x, this.y, this.width, this.height);
         if (this.startX <= this.endX)
             this.direction = 1;
         else
@@ -42,7 +46,7 @@ Enemy.prototype.move = function (player) {
     }
 
     if (this.type == "vertical") {
-
+        context.clearRect(this.x, this.y, this.width, this.height);
         if (this.startY <= this.endY)
             this.direction = 1;
         else
@@ -53,7 +57,7 @@ Enemy.prototype.move = function (player) {
     }
 
     if (this.type == "diagonal") {
-
+        context.clearRect(this.x, this.y, this.width, this.height);
         if (this.startX <= this.endX)
             this.direction = 1;
         else
@@ -65,7 +69,7 @@ Enemy.prototype.move = function (player) {
     }
 
     if (this.type == "square") {
-
+        context.clearRect(this.x, this.y, this.width, this.height);
         if (this.side == 1)
             this.x += this.speed;
         if (this.side == 2)
@@ -128,7 +132,7 @@ Enemy.prototype.move = function (player) {
     }
 }
 
-Enemy.prototype.draw = function (context) {
+Enemy.prototype.draw = function () {
     context.save();
     context.drawImage(this.img, this.x, this.y, this.width, this.height); 
 	
