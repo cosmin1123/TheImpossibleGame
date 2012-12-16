@@ -21,15 +21,18 @@ app.configure( function() {
 });
 
 
-// Socket.io configuration.
-io.sockets.on('connection', function (socket) {
+var onNewPlayerConnected = function (socket) {
 
     // Each client sends his position on the gameboard and that is broadcasted back to everyone else.
     socket.on('XY', function (coords) {
         socket.broadcast.emit('XY', coords);
     });
 
-});
+};
+
+
+// Socket.io configuration.
+io.sockets.on('connection', onNewPlayerConnected);
 
 
 // Bind web server to port.
