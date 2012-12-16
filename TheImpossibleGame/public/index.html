@@ -59,7 +59,9 @@
         	   // init
             player = new Player("player", 30, 30, 50, 50);
             var enemy = init_enemy();
-            
+            socket.on('ready', function (co) {
+            	console.log(co);
+            });
 
             window.addEventListener('keydown', function (event) {
                 if(event.keyCode==39){

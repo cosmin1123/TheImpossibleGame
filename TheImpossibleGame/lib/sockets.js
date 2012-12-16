@@ -11,7 +11,7 @@ var joinRoom = (function () {
 
         // When the room is full, broadcast start.
         if (numClients % 2 === 0) {
-            socket.broadcast.to(roomNumber).emit('ready');
+            socket.broadcast.to(roomNumber).emit('ready', "ready");
         }
 
         return roomNumber;

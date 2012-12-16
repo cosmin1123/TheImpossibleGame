@@ -59,7 +59,9 @@
         	   // init
             player = new Player("player", 30, 30, 50, 50);
             var enemy = init_enemy();
-            
+            socket.on('ready', function (co) {
+            	console.log(co
+            });
 
             window.addEventListener('keydown', function (event) {
                 if(event.keyCode==39){
@@ -105,7 +107,7 @@
 		socket.on('XY', function (coords) {
   			if (coords.playerName !== currentPlayer) {
   			  	 resizeClear(beforeReceiveX, beforeReceiveY, 30, 30);
-  			    resizeDraw(player.img, coords.x, coords.y, 30, 30);
+  			    resizeDraw(player2Img, coords.x, coords.y, 30, 30);
 		 
 				 playerArray[playerIndex] = coords.x;
 				 playerArray[playerIndex+1] = coords.y;
