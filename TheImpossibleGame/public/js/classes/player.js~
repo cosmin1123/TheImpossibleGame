@@ -27,11 +27,10 @@ Player.prototype.move = function () {
         
 	 if(isRight || isLeft || isUp || isDown)
 	 	sendingCoords();
-    
     wall_collission();
-
  	context.save();
  	resizeDraw(this.img, this.x, this.y, this.width, this.height);
+
     context.restore();
 
 }

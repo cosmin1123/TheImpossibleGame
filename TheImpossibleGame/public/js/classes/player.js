@@ -29,9 +29,9 @@ Player.prototype.move = function () {
 	 	sendingCoords();
     
     wall_collission();
+ 	 context.save();
+ 	 resizeDraw(this.img, this.x, this.y, this.width, this.height);
 
- 	context.save();
- 	resizeDraw(this.img, this.x, this.y, this.width, this.height);
     context.restore();
 
 }
