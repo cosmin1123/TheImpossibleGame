@@ -14,6 +14,7 @@
     <img src="images/player.png" id = "player" style="display:none"/>
     <img src="images/player2.png" id = "player2" style="display:none"/>
     <img src="images/brick_wall.png" id = "wall" style="display:none"/>
+     <img src="images/cake.png" id ="cake" style="display:none"/>
     
     <script src="js/utils.js"></script>
     <script src="./js/classes/player.js"></script>
@@ -55,13 +56,15 @@
       		
             canvas.width = 1600 * scalePercentageX;
             canvas.height = 900 * scalePercentageY;
+            init_map(canvas); 
+        		socket.on('ready', function (co) {
+            	console.log(co);
+           
         
         	   // init
             player = new Player("player", 30, 30, 50, 50);
             var enemy = init_enemy();
-            socket.on('ready', function (co) {
-            	console.log(co);
-            });
+            
 
             window.addEventListener('keydown', function (event) {
                 if(event.keyCode==39){
@@ -101,6 +104,7 @@
            }());
            
            sendingCoords();
+            });
         };
       
 		

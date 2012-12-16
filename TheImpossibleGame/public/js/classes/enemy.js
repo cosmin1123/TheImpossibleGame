@@ -122,8 +122,9 @@ Enemy.prototype.move = function () {
     //Not implemented yet
 
     if (this.type == "sinus") {
+    resizeClear(this.x, this.y, this.width, this.height);
         this.x += this.speed;
-        this.y = this.startY + Math.sin(2 * Math.PI * (this.x / 50)) * 20 ;
+        this.y = this.startY + Math.sin(2 * Math.PI * (this.x / 50)) * 100 ;
         if( this.x > this.startX + this.value){
         	this.speed = this.speed * (-1);
         }
