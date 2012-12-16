@@ -12,6 +12,7 @@
     <img src="images/fireball.png" id = "obstacle" style="display:none"/>
     <img src="images/shuriken.png" id = "obstacle2" style="display:none"/>
     <img src="images/player.png" id = "player" style="display:none"/>
+    <img src="images/player2.png" id = "player2" style="display:none"/>
     <img src="images/brick_wall.png" id = "wall" style="display:none"/>
     
     <script src="js/utils.js"></script>
@@ -35,6 +36,7 @@
 		var beforeReceiveX = 0;
 		var beforeReceiveY = 0;
 		var canvas = document.getElementById('canvas'); 
+	   var player2Img = document.getElementById('player2');
       var context = canvas.getContext('2d');
 		var socket = io.connect();
 		var playerArray = new Array;
@@ -104,12 +106,12 @@
   			if (coords.playerName !== currentPlayer) {
   			  	 resizeClear(beforeReceiveX, beforeReceiveY, 30, 30);
   			    resizeDraw(player.img, coords.x, coords.y, 30, 30);
-/*				 
+		 
 				 playerArray[playerIndex] = coords.x;
 				 playerArray[playerIndex+1] = coords.y;
 				 
 				 playerBeforeArray[playerIndex++] = 
-	*/			 
+				 
     			 beforeReceiveX = coords.x;
     			 beforeReceiveY = coords.y;
     		}		
