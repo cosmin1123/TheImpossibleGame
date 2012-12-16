@@ -28,7 +28,6 @@ Player.prototype.move = function () {
     wall_collission();
  	context.save();
  	resizeDraw(this.img, this.x, this.y, this.width, this.height);
-
     context.restore();
 
 }

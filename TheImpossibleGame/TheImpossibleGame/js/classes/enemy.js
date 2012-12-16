@@ -122,9 +122,11 @@ Enemy.prototype.move = function () {
     //Not implemented yet
 
     if (this.type == "sinus") {
+        resizeClear(this.x, this.y, this.width, this.height);
         this.x += this.speed;
-        this.y = this.startY + Math.sin(2 * Math.PI * (this.x / 50)) * 20 ;
-        if( this.x > this.startX + this.value){
+        this.y = this.startY + Math.sin(2 * Math.PI * (this.x / 50)) * 100 ;
+
+        if (this.x > this.startX + this.value) {
         	this.speed = this.speed * (-1);
         }
         if( this.x < this.startX){
@@ -150,8 +152,8 @@ Enemy.prototype.draw = function () {
 
 function playerDies(){
  	resizeClear(player.x, player.y, player.width, player.height);
-	player.x = 40;
-	player.y = 40;
+	player.x = player.startX;
+	player.y = player.startY;
 }
 
 function collision(c1, c2) {

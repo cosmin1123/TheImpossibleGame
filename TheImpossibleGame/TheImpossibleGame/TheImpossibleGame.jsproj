@@ -54,9 +54,11 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="images\brick_wall.png" />
+    <Content Include="images\cake.png" />
     <Content Include="images\fireball.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\player.png" />
+    <Content Include="images\potato.jpg" />
     <Content Include="images\shuriken.png" />
     <Content Include="images\traktor.gif" />
     <Content Include="images\zombie.png" />
