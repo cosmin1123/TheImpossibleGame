@@ -40,14 +40,14 @@ function init_map(canvas) {
     var context = canvas.getContext('2d');
 
     //border walls
-    wall_horizontal(context, 0, 0, canvas.width, 20); 
-    wall_vertical(context, 0, 0, canvas.height, 20);
-    wall_horizontal(context, 0, canvas.height - 20, canvas.width, 20);
-    wall_vertical(context, canvas.width - 20, 0, canvas.height - 20, 20);
+    wall_horizontal(context, 0, 0, 1600, 20); 
+    wall_vertical(context, 0, 0, 900, 20);
+    wall_horizontal(context, 0, 880, 1600, 20);
+    wall_vertical(context, 1580, 0, 880, 20);
 
     //map walls
     wall_vertical(context, 100, 0, 380, 20);
-    wall_vertical(context, 100, 460, canvas.height - 20, 20);
+    wall_vertical(context, 100, 460, 880, 20);
     wall_horizontal(context, 120, 340, 700, 20);
     wall_horizontal(context, 120, 500, 700, 20);
     wall_vertical(context, 840, 160, 660, 20);

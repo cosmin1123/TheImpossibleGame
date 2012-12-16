@@ -15,7 +15,10 @@ Player.prototype.move = function () {
     if (vy < 4 && vy > -4)
         vy += ay;
         
-    context.clearRect(this.x, this.y, this.width, this.height); 
+    context.clearRect(Math.round(this.x * scalePercentageX), 
+    Math.round(scalePercentageY * this.y),
+    Math.round(scalePercentageX * this.width),
+    Math.round(scalePercentageY *  this.height)); 
  
     player.XBefore = player.x;
     player.YBefore = player.y;
@@ -26,7 +29,10 @@ Player.prototype.move = function () {
  	 wall_collission();
  	     
     context.save();
-    context.drawImage(this.img, this.x, this.y,this.width,this.height);
+    context.drawImage(this.img, Math.round(scalePercentageX * this.x), 		             
+    Math.round(scalePercentageY * this.y),
+    Math.round(scalePercentageX * this.width),
+    Math.round(scalePercentageY * this.height));
     context.restore();
 
 }

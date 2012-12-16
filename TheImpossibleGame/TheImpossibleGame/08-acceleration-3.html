@@ -38,9 +38,7 @@
             canvas.width = 1600 * scalePercentageX;
             canvas.height = 900 * scalePercentageY;
         
-            player = new Player("player",Math.round(30 * scalePercentageX),
-            Math.round(30 * scalePercentageY), Math.round(50 * scalePercentageX),
-            Math.round(50 * scalePercentageY));
+            player = new Player("player", 30, 30, 50, 50);
                 
             enemy = init_enemy();
             init_map(canvas);
