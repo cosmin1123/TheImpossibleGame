@@ -4,6 +4,8 @@ var path = require('path');
 var express = require('express');
 var socketIo = require('socket.io');
 
+var sockets = require('./lib/sockets.js');
+
 
 // Init the http server.
 var app = express();
@@ -12,6 +14,7 @@ var server = http.createServer(app);
 
 // Init socket.io
 io = socketIo.listen(server);
+sockets.bind(io);
 
 
 // Configure web server.
@@ -19,20 +22,6 @@ app.configure( function() {
     // Serve static content (html, css, js) from folder /public
     app.use(express.static(path.join(__dirname, 'public')));
 });
-
-
-var onNewPlayerConnected = function (socket) {
-
-    // Each client sends his position on the gameboard and that is broadcasted back to everyone else.
-    socket.on('XY', function (coords) {
-        socket.broadcast.emit('XY', coords);
-    });
-
-};
-
-
-// Socket.io configuration.
-io.sockets.on('connection', onNewPlayerConnected);
 
 
 // Bind web server to port.
