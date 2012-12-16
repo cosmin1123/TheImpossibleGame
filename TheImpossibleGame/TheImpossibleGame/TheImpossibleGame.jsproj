@@ -53,7 +53,6 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="08-acceleration-3.html" />
     <Content Include="images\brick_wall.png" />
     <Content Include="images\fireball.png" />
     <Content Include="images\logo.png" />
@@ -70,6 +69,7 @@
     <Content Include="js\classes\map.js" />
     <Content Include="js\classes\wall.js" />
     <Content Include="js\utils.js" />
+    <Content Include="index.html" />
     <None Include="TheImpossibleGame_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
