@@ -24,10 +24,13 @@ Player.prototype.move = function () {
         this.y -= 4;
     if (isDown == true)
         this.y += 4;
-
+        
+	 if(isRight || isLeft || isUp || isDown)
+	 	sendingCoords();
+    
     wall_collission();
- 	context.save();
- 	resizeDraw(this.img, this.x, this.y, this.width, this.height);
+ 	 context.save();
+ 	 resizeDraw(this.img, this.x, this.y, this.width, this.height);
 
     context.restore();
 
