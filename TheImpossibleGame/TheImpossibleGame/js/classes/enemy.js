@@ -27,20 +27,15 @@ function Enemy(id, type, startX, startY, value, speed, height, width) {
         this.sector = 1;
     }
     context.save();
-     context.drawImage(this.img, Math.round(scalePercentageX * this.x), 		             
-    Math.round(scalePercentageY * this.y),
-    Math.round(scalePercentageX * this.width),
-    Math.round(scalePercentageY * this.height));
+    resizeDraw(this.img, this.x, this.y, this.width, this.height);
     context.restore();
 }
 
 Enemy.prototype.move = function () {
 
     if (this.type == "horizontal") {
-        context.clearRect(Math.round(this.x * scalePercentageX), 
-    	  Math.round(scalePercentageY * this.y),
-    	  Math.round(scalePercentageX * this.width),
-    	  Math.round(scalePercentageY *  this.height)); 
+    	  resizeClear(this.x, this.y, this.width, this.height);
+
         if (this.startX <= this.endX)
             this.direction = 1;
         else
@@ -51,10 +46,8 @@ Enemy.prototype.move = function () {
     }
 
     if (this.type == "vertical") {
-        context.clearRect(Math.round(this.x * scalePercentageX), 
-    	  Math.round(scalePercentageY * this.y),
-    	  Math.round(scalePercentageX * this.width),
-    	  Math.round(scalePercentageY *  this.height)); 
+ 	 	  resizeClear(this.x, this.y, this.width, this.height);
+ 	 
         if (this.startY <= this.endY)
             this.direction = 1;
         else
@@ -65,10 +58,8 @@ Enemy.prototype.move = function () {
     }
 
     if (this.type == "diagonal") {
-        context.clearRect(Math.round(this.x * scalePercentageX), 
-    	  Math.round(scalePercentageY * this.y),
-    	  Math.round(scalePercentageX * this.width),
-    	  Math.round(scalePercentageY *  this.height)); 
+	 	  resizeClear(this.x, this.y, this.width, this.height);
+	 
         if (this.startX <= this.endX)
             this.direction = 1;
         else
@@ -80,10 +71,7 @@ Enemy.prototype.move = function () {
     }
 
     if (this.type == "square") {
-        context.clearRect(Math.round(this.x * scalePercentageX), 
-    	  Math.round(scalePercentageY * this.y),
-    	  Math.round(scalePercentageX * this.width),
-    	  Math.round(scalePercentageY *  this.height)); 
+	 	  resizeClear(this.x, this.y, this.width, this.height);
     	  
         if (this.side == 1)
             this.x += this.speed;
@@ -149,10 +137,7 @@ Enemy.prototype.move = function () {
 
 Enemy.prototype.draw = function () {
     context.save();
-    context.drawImage(this.img, Math.round(scalePercentageX * this.x), 		             
-    Math.round(scalePercentageY * this.y),
-    Math.round(scalePercentageX * this.width),
-    Math.round(scalePercentageY * this.height));
+	resizeDraw(this.img, this.x, this.y, this.width, this.height);
 
 	
     if(collision(this, player))
@@ -164,10 +149,7 @@ Enemy.prototype.draw = function () {
 };
 
 function playerDies(){
-   context.clearRect(Math.round(player.x * scalePercentageX), 
-   Math.round(scalePercentageY * player.y),
-   Math.round(scalePercentageX * player.width),
-   Math.round(scalePercentageY *  player.height)); 
+ 	resizeClear(player.x, player.y, player.width, player.height);
 	player.x = 40;
 	player.y = 40;
 }

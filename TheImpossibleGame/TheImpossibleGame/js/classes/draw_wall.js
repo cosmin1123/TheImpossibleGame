@@ -6,9 +6,8 @@ function wall_vertical(context, fromX, fromY, toY, scale) {
     
     context.save();
     while (fromY <= toY) {
-    	  context.drawImage(wall, scalePercentageX * fromX, 		             
-   	  scalePercentageY * fromY, scalePercentageX * scale,
-   	  scalePercentageY * scale);
+    	  resizeDrawWall(wall, fromX, fromY, scale, scale);
+    	  
         walls[index++] = new Wall(fromX, fromY, scale);
         fromY += scale;
     }
@@ -18,9 +17,8 @@ function wall_horizontal(context, fromX,fromY, toX,scale) {
 
     context.save();
     while (fromX <= toX) {
-        context.drawImage(wall, scalePercentageX * fromX, 		             
-   	  scalePercentageY * fromY, scalePercentageX * scale,
-   	  scalePercentageY * scale);
+    	  resizeDrawWall(wall, fromX, fromY, scale, scale);
+      
         walls[index++] = new Wall(fromX, fromY, scale);
         fromX += scale;
     }

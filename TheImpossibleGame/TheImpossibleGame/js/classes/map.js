@@ -54,3 +54,23 @@ function init_map(canvas) {
     wall_horizontal(context, 180, 250, 820, 20);
     wall_horizontal(context, 180, 600, 820, 20);
 }
+
+function resizeDraw(img, x, y, width, height){
+	context.drawImage(img, Math.round(scalePercentageX * x), 		             
+   Math.round(scalePercentageY * y),
+   Math.round(scalePercentageX * width),
+   Math.round(scalePercentageY * height));
+}
+
+function resizeClear(x, y, width, height){
+    context.clearRect(Math.round(x * scalePercentageX), 
+    Math.round(scalePercentageY * y),
+    Math.round(scalePercentageX * width),
+    Math.round(scalePercentageY *  height)); 
+}
+
+function resizeDrawWall(img, x, y, width, height){
+  	context.drawImage(img, scalePercentageX * x, 		             
+  	scalePercentageY * y, scalePercentageX * width,
+   scalePercentageY * height);
+}

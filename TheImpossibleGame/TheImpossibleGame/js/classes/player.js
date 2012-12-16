@@ -10,11 +10,9 @@ function Player (id,width, height,posX,posY) {
 }
 
 Player.prototype.move = function () {
-
-	 context.clearRect(Math.round(this.x * scalePercentageX), 
-    Math.round(scalePercentageY * this.y),
-    Math.round(scalePercentageX * this.width),
-    Math.round(scalePercentageY *  this.height)); 
+	
+	 resizeClear(this.x, this.y, this.width, this.height);
+ 
     
     this.XBefore = this.x;
     this.YBefore = this.y;
@@ -29,10 +27,7 @@ Player.prototype.move = function () {
 
     wall_collission();
  	context.save();
-   context.drawImage(this.img, Math.round(scalePercentageX * this.x), 		             
-   Math.round(scalePercentageY * this.y),
-   Math.round(scalePercentageX * this.width),
-   Math.round(scalePercentageY * this.height));
+ 	resizeDraw(this.img, this.x, this.y, this.width, this.height);
 
     context.restore();
 
