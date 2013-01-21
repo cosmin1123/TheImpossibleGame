@@ -14,16 +14,16 @@ Player.prototype.move = function () {
 	resizeClear(this.x, this.y, this.width, this.height);
  
     
-    this.XBefore = this.x;
-    this.YBefore = this.y;
-    if (isRight == true)
-        this.x += 4;
-    if (isLeft == true)
-        this.x -= 4;
-    if (isUp == true)
-        this.y -= 4;
+	this.XBefore = this.x;
+	this.YBefore = this.y;
+	if (isRight == true)
+		this.x += 4;
+	if (isLeft == true)
+		this.x -= 4;
+	if (isUp == true)
+		this.y -= 4;
     if (isDown == true)
-        this.y += 4;
+		this.y += 4;
         
 	 if(isRight || isLeft || isUp || isDown)
 	 	sendingCoords();
