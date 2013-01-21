@@ -1,4 +1,4 @@
-Install
+Istall
 -------
 
     git clone git@github.com:cosmin1123/TheImpossibleGame.git
@@ -20,6 +20,7 @@ Runing the game
 
 Possible bugs
 -------
-	If you start the game and you don't see any walls it may be because the images of the walls were not loaded when the game started.
+	If you start the game and you don't see any walls don't panic.
+ 	It may be because the images of the walls were not loaded when the game started.
 	Just refresh the page and it may work.
 	If it does not work get a better PC.
