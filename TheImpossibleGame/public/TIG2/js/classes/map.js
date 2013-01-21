@@ -132,6 +132,6 @@ function resizeClear(x, y, width, height) {
 
 function resizeDrawWall(img, x, y, width, height) {
     context.drawImage(img, scalePercentageX * x,
-  	scalePercentageY * y, scalePercentageX * width,
-   scalePercentageY * height);
+        scalePercentageY * y, scalePercentageX * width,
+        scalePercentageY * height);
 }
