@@ -7,9 +7,9 @@ Istall
 
 Runing the game
 -------
-   In order to run the game you first have to start the server
-    cd TheImpossibleGame/TheImpossibleGame
-    node server.js
+	In order to run the game you first have to start the server
+	cd TheImpossibleGame/TheImpossibleGame
+	node server.js
    
 	 We have two versions of the game.
 		
