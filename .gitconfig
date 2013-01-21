@@ -1,0 +1,4 @@
+[core]
+pager = less -FXRS -x4
+
+
