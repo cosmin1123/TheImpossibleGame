@@ -1,12 +1,12 @@
 function Player (number,id,width, height,posX,posY) {
-  this.img = document.getElementById(id);
-  this.x = posX;
-  this.y = posY;
-  this.width = width;
-  this.height = height;
-  this.startX = posX;
-  this.startY = posY;
-  this.number= number;
+    this.img = document.getElementById(id);
+    this.x = posX;
+    this.y = posY;
+    this.width = width;
+    this.height = height;
+    this.startX = posX;
+    this.startY = posY;
+    this.number= number;
   
 }
 
@@ -50,15 +50,17 @@ wallCollision = function(){
             walls[i].x + walls[i].width < player1.x ||
 			player1.y + player1.height < walls[i].y ||
 			walls[i].y + walls[i].height  < player1.y)) {
- 			 			player1.x = player1.XBefore;
-            		    player1.y = player1.YBefore;
+ 			 		
+                player1.x = player1.XBefore;
+                player1.y = player1.YBefore;
          }
 	for (var i = 0; i < index; i++)
 	    if (!(player2.x + player2.width < walls[i].x ||
            walls[i].x + walls[i].width < player2.x ||
            player2.y + player2.height < walls[i].y ||
            walls[i].y + walls[i].height < player2.y)) {
-	        player2.x = player2.XBefore;
+            
+            player2.x = player2.XBefore;
 	        player2.y = player2.YBefore;
 	    }
 
