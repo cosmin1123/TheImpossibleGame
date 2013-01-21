@@ -1,17 +1,17 @@
 function Player (id,width, height,posX,posY) {
-  this.img = document.getElementById(id);
-  this.x = posX;
-  this.y = posY;
-  this.width = width;
-  this.height = height;
-  this.startX = posX;
-  this.startY = posY;
+	this.img = document.getElementById(id);
+	this.x = posX;
+	this.y = posY;
+	this.width = width;
+	this.height = height;
+	this.startX = posX;
+	this.startY = posY;
   
 }
 
 Player.prototype.move = function () {
 	
-	 resizeClear(this.x, this.y, this.width, this.height);
+	resizeClear(this.x, this.y, this.width, this.height);
  
     
     this.XBefore = this.x;
@@ -28,9 +28,9 @@ Player.prototype.move = function () {
 	 if(isRight || isLeft || isUp || isDown)
 	 	sendingCoords();
     
-    wallCollision();
- 	 context.save();
- 	 resizeDraw(this.img, this.x, this.y, this.width, this.height);
+	wallCollision();
+ 	context.save();
+ 	resizeDraw(this.img, this.x, this.y, this.width, this.height);
 
     context.restore();
 
