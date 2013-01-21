@@ -2,7 +2,7 @@
 var walls = new Array;
 var index = 0;
 
-function wall_vertical(context, fromX, fromY, toY, scale) {
+function wallVertical(context, fromX, fromY, toY, scale) {
     
     context.save();
     while (fromY <= toY) {
@@ -13,7 +13,7 @@ function wall_vertical(context, fromX, fromY, toY, scale) {
     }
     context.restore();
 };
-function wall_horizontal(context, fromX,fromY, toX,scale) {
+function wallHorizontal(context, fromX,fromY, toX,scale) {
 
     context.save();
     while (fromX <= toX) {

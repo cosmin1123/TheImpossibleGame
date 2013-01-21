@@ -35,7 +35,7 @@ Player.prototype.move = function () {
         if (isDown2 == true)
             this.y += 4;
     }
-    wall_collission();
+    wallCollision();
  	context.save();
  	resizeDraw(this.img, this.x, this.y, this.width, this.height);
 
@@ -43,7 +43,7 @@ Player.prototype.move = function () {
 
 }
 
-wall_collission = function(){
+wallCollision = function(){
 	
 	for( var i = 0; i < index; i++)	
          if (!(player1.x + player1.width < walls[i].x ||

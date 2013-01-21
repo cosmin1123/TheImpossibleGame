@@ -52,8 +52,8 @@
 
              player1 = new Player(1,"player", 30, 30, 50, 50);
              player2 = new Player(2, "player2", 30, 30, 50,800);
-             var enemy = init_enemy();
-             init_map(canvas);
+             var enemy = initEnemy();
+             initMap(canvas);
              window.addEventListener('keydown', function (event) {
                  if (event.keyCode == 39) {
                      isRight1 = true;

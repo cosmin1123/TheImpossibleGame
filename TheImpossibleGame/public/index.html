@@ -58,7 +58,7 @@
 
                 canvas.width = 1600 * scalePercentageX;
                 canvas.height = 900 * scalePercentageY;
-                init_map(canvas);
+                initMap(canvas);
 
 
 
@@ -68,7 +68,7 @@
 
                     // init
                     player = new Player("player", 30, 30, 50, 50);
-                    var enemy = init_enemy();
+                    var enemy = initEnemy();
 
 
                     window.addEventListener('keydown', function (event) {
@@ -103,7 +103,7 @@
                     }, false);
 
                     setTimeout(function () {
-                        init_map(canvas);
+                        initMap(canvas);
                     }, 100);
 
                     (function drawFrame() {
