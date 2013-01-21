@@ -22,17 +22,17 @@ Player.prototype.move = function () {
 		this.x -= 4;
 	if (isUp == true)
 		this.y -= 4;
-    if (isDown == true)
+	if (isDown == true)
 		this.y += 4;
         
-	 if(isRight || isLeft || isUp || isDown)
-	 	sendingCoords();
+	if(isRight || isLeft || isUp || isDown)
+		sendingCoords();
     
 	wallCollision();
  	context.save();
  	resizeDraw(this.img, this.x, this.y, this.width, this.height);
 
-    context.restore();
+	context.restore();
 
 }
 
